@@ -1,0 +1,24 @@
+//Note: This code does not work for all cases.
+
+/* Have the function DistinctList(arr) take the array of numbers stored in arr and 
+determine the total number of duplicate entries. For example if the input is [1, 2, 2, 2, 3] 
+then your program should output 2 because there are two duplicates of one of the elements.*/
+
+function DistinctList(arr) { 
+    var numDuplicates = 0;
+    var newArray = arr;
+    var trash = [];
+    for (var i=0; i<newArray.length; i++){
+        var innerCount = 0;
+        for(var j=0; j<newArray.length; j++){
+            if (newArray[i]===newArray[j]){
+                innerCount++;
+            }
+        }
+        if (innerCount>1){
+            numDuplicates += (innerCount-1);
+        }
+        trash = newArray.splice(i,1);      
+    }
+    return numDuplicates;
+}
