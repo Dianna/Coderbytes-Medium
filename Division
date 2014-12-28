@@ -3,6 +3,18 @@ Greatest Common Factor. That is, return the greatest number that evenly goes int
 numbers with no remainder. For example: 12 and 16 both are divisible by 1, 2, and 4 so the 
 output should be 4. The range for both parameters will be from 1 to 10^3. */
 
+//New:
+function Division(num1, num2){
+    var min = Math.min.apply(Math,[num1,num2]);
+    for (var i=min; i>=1; i--){
+        if (num1%i===0 && num2%i===0){
+            return i;
+        }
+    }
+}
+
+
+//Previous:
 function Division(num1,num2) { 
   var factors1 = [];
   var factors2 = [];
