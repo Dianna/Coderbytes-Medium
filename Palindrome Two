@@ -13,3 +13,16 @@ function PalindromeTwo(str) {
     return false;
   }
 }
+
+//Retried, and nearly the same:
+
+function PalindromeTwo(str){
+    var nonChar = /[^a-z]/gi
+    var cleanStr = str.replace(nonChar, "");
+    cleanStr = cleanStr.toLowerCase();
+    if (cleanStr === cleanStr.split("").reverse().join("")){
+        return true;
+    } else {
+        return false;
+    }
+}
