@@ -1,0 +1,36 @@
+/*This code is incredibly messy and inefficient, but it works for all cases. I haven't 
+learned/figured out how to do permutations show I copied an array shuffler off stackoverflow 
+and made it work for my code. Enjoy the nonsense.*/
+
+/* Have the function PermutationStep(num) take the num parameter being passed and return 
+the next number greater than num using the same digits. For example: if num is 123 return 
+132, if it's 12453 return 12534. If a number has no greater permutations, return -1 
+(ie. 999).*/
+
+function PermutationStep(num) { 
+  var arr = num.toString().split("");
+  for (var i=0; i<arr.length; i++){
+    arr[i] = +(arr[i]);
+  }
+  var newNum = num+10000000000000;
+  var loop = 0;
+  var changed = false;
+  function makeNum(o){
+    for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
+    if (+(o.join(""))>num && +(o.join(""))<newNum){
+      newNum = +(o.join(""));
+      changed = true;
+    }
+    loop++;
+    if (loop>1000){
+      return "done";
+    }
+    makeNum(o);
+  };
+  makeNum(arr);
+  if (changed===true){
+    return newNum;
+  } else {
+    return -1;
+  }
+}
