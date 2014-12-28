@@ -1,4 +1,4 @@
-//Note: This code won't work if it "wraps around" the alphabet.
+//Note: This code has been corrected to wrap around the alphabet
 
 /* Have the function CaesarCipher(str,num) take the str parameter and perform a Caesar Cipher 
 shift on it using the num parameter as the shifting number. A Caesar Cipher works by shifting 
@@ -6,6 +6,31 @@ each letter in the string N places down in the alphabet (in this case N will be 
 Punctuation, spaces, and capitalization should remain intact. For example if the string is 
 "Caesar Cipher" and num is 2 the output should be "Ecguct Ekrjgt".*/
 
+//New
+function CaesarCipher(str,num){
+    var low = /[a-z]/;
+    var hi = /[A-Z]/;
+    str = str.split("");
+    for (var i=0; i<str.length; i++){
+        var letter = str[i];
+        if ( letter.match(low) ){
+            x = letter.charCodeAt();
+            if(x+num>122){
+                x = x-26;
+            } 
+            str[i]=String.fromCharCode(x+num);
+        } else if ( letter.match(hi) ){
+            x = letter.charCodeAt();
+            if (x+num > 90){
+                x = x-26;
+            }
+            str[i]=String.fromCharCode(x+num);
+        }
+    }
+    return str.join("");
+}
+
+//Previous
 function CaesarCipher(str,num){
     var charArray = [];
     var re = /[a-z]/i;
