@@ -4,6 +4,34 @@ greatest day ever!" should return greatest because it has 2 e's (and 2 t's) and 
 before ever which also has 2 e's. If there are no words with repeating letters return -1. 
 Words will be separated by spaces. */
 
+//New (nearly the same but contains a while loop rather than a 3rd for loop)
+function LetterCount(str){
+    var longest = "";
+    var count = 0;
+    var words = str.split(" ");
+    for (var i =0; i<words.length; i++){
+        var sorted = words[i].split("").sort();
+        for (var j=0; j<sorted.length; j++){
+            var x=j+1;
+            var letterCount = 0;
+            while (sorted[x]===sorted[j]){
+                letterCount++
+                x++;
+            }
+            if (letterCount > count){
+                count = letterCount;
+                longest = words[i];
+            }
+        }
+    }
+    if (count>1){
+        return longest;
+    } else {
+        return -1;
+    }
+}
+
+//Previous
 function LetterCount(str) {
   var wordArray = str.split(" ");
   var word = "";
