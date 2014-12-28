@@ -5,6 +5,18 @@ should be 2 because two numbers need to be added to the array (5 and 7) to make 
 consecutive array of numbers from 4 to 8. Negative numbers may be entered as parameters and 
 no array will have less than 2 elements.*/
 
+//Alternative
+function Consecutive(arr){
+    var min = Math.min.apply(Math,arr);
+    var max = Math.max.apply(Math,arr);
+    var fullArr = [];
+    for (var i=min; i<=max; i++){
+        fullArr.push(i);
+    }
+    return fullArr.length-arr.length
+}
+
+//Original (and I think much more elegant...)
 function Consecutive(arr){
     var max = Math.max.apply(Math, arr);
     var min = Math.min.apply(Math, arr);    
