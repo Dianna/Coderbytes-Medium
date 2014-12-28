@@ -1,0 +1,35 @@
+/*I used the same array shuffler that I used in Permutation Step for this code with similar
+doubts about its efficiency, but it works for all cases*/
+
+/*Have the function PrimeChecker(num) take num and return 1 if any arrangement of num comes 
+out to be a prime number, otherwise return 0. For example: if num is 910, the output should 
+be 1 because 910 can be arranged into 109 or 019, both of which are primes.*/
+
+function PrimeChecker(num) { 
+  var intArr = num.toString().split("");
+  for (var i=0; i<intArr.length; i++){
+    intArr[i]= +(intArr[i]);
+  }
+  var rearanges = 0;
+  var loop = 0;
+  function makeNum(o){
+    for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
+    var number = +(o.join(""));
+    var prime = true;
+    for (var h=2; h<number; h++){
+      if (number%h===0){
+        prime = false;
+      }
+    }
+    loop++;
+    if (prime===true){
+      rearanges = 1;
+    }
+    if (loop>100){
+      return "done";
+    }
+    makeNum(o);
+  };
+  makeNum(intArr);
+  return rearanges;
+}
