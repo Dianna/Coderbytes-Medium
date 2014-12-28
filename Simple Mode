@@ -4,6 +4,31 @@ the output should be 4. If there is more than one mode return the one that appea
 array first (ie. [5, 10, 10, 6, 5] should return 5 because it appeared first). If there is 
 no mode return -1. The array will not be empty. */
 
+//Alternate version
+function SimpleMode(arr){
+    var numCount = 0, mode;
+    for (var i=0; i<arr.length; i++){
+        var count = 0;
+        for (var j=i+1; j<arr.length; j++){
+            if (arr[i]===arr[j]){
+                count++;
+                arr.splice(j,1);
+                j-=1;
+            }
+        }
+        if (count>numCount){
+            numCount=count;
+            mode = arr[i];
+        }
+    }
+    if (numCount > 0){
+        return mode;
+    } else {
+        return -1;
+    }
+}
+
+//Original
 function SimpleMode(arr) { 
   var mode = -1;
   var num2mode = 1;
