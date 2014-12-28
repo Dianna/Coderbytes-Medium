@@ -1,6 +1,29 @@
 /* Have the function PrimeMover(num) return the numth prime number. The range will be from 
 1 to 10^4. For example: if num is 16 the output should be 53 as 53 is the 16th prime number. */
 
+//New:
+function PrimeMover(num){
+    var count = 1;
+    if (num===1){
+        return 2;
+    }
+    for (var i=3; i<=1000000; i++){
+        var prime = true;
+        for (var j=2; j<i; j++){
+            if (i%j===0){
+                prime = false;
+            }
+        }
+        if (prime===true){
+            count++;
+        }
+        if (count===num){
+            return i;
+        }
+    }
+}
+
+//Previous:
 function PrimeMover(num) {
     if (num===1){
         return 2;
