@@ -1,5 +1,5 @@
 /*This code is incredibly messy and inefficient, but it works for all cases. I haven't 
-learned/figured out how to do permutations show I copied an array shuffler off stackoverflow 
+learned/figured out how to do permutations so I copied an array shuffler off stackoverflow 
 and made it work for my code. Enjoy the nonsense.*/
 
 /* Have the function PermutationStep(num) take the num parameter being passed and return 
